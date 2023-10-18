@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B4813582AE06C54006C87EF /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4813572AE06C54006C87EF /* LoginScreen.swift */; };
+		5B48135B2AE06E22006C87EF /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48135A2AE06E22006C87EF /* UIColor + Extensions.swift */; };
 		5B6145572ADF38DC00F7A5CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6145562ADF38DC00F7A5CD /* AppDelegate.swift */; };
 		5B6145592ADF38DC00F7A5CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6145582ADF38DC00F7A5CD /* SceneDelegate.swift */; };
-		5B61455B2ADF38DC00F7A5CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61455A2ADF38DC00F7A5CD /* ViewController.swift */; };
+		5B61455B2ADF38DC00F7A5CD /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61455A2ADF38DC00F7A5CD /* LoginVC.swift */; };
 		5B6145602ADF38DF00F7A5CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B61455F2ADF38DF00F7A5CD /* Assets.xcassets */; };
 		5B6145632ADF38DF00F7A5CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B6145612ADF38DF00F7A5CD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B4813572AE06C54006C87EF /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		5B48135A2AE06E22006C87EF /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		5B6145532ADF38DC00F7A5CD /* LoginViewCode-Curso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LoginViewCode-Curso.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B6145562ADF38DC00F7A5CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B6145582ADF38DC00F7A5CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5B61455A2ADF38DC00F7A5CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5B61455A2ADF38DC00F7A5CD /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		5B61455F2ADF38DF00F7A5CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B6145622ADF38DF00F7A5CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B6145642ADF38DF00F7A5CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +39,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B4813552AE06C38006C87EF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5B4813562AE06C42006C87EF /* Screen */,
+				5B61455A2ADF38DC00F7A5CD /* LoginVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5B4813562AE06C42006C87EF /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				5B4813572AE06C54006C87EF /* LoginScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		5B4813592AE06E02006C87EF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5B48135A2AE06E22006C87EF /* UIColor + Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		5B61454A2ADF38DC00F7A5CD = {
 			isa = PBXGroup;
 			children = (
@@ -54,9 +83,10 @@
 		5B6145552ADF38DC00F7A5CD /* LoginViewCode-Curso */ = {
 			isa = PBXGroup;
 			children = (
+				5B4813592AE06E02006C87EF /* Extensions */,
+				5B4813552AE06C38006C87EF /* Login */,
 				5B6145562ADF38DC00F7A5CD /* AppDelegate.swift */,
 				5B6145582ADF38DC00F7A5CD /* SceneDelegate.swift */,
-				5B61455A2ADF38DC00F7A5CD /* ViewController.swift */,
 				5B61455F2ADF38DF00F7A5CD /* Assets.xcassets */,
 				5B6145612ADF38DF00F7A5CD /* LaunchScreen.storyboard */,
 				5B6145642ADF38DF00F7A5CD /* Info.plist */,
@@ -134,7 +164,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B61455B2ADF38DC00F7A5CD /* ViewController.swift in Sources */,
+				5B61455B2ADF38DC00F7A5CD /* LoginVC.swift in Sources */,
+				5B48135B2AE06E22006C87EF /* UIColor + Extensions.swift in Sources */,
+				5B4813582AE06C54006C87EF /* LoginScreen.swift in Sources */,
 				5B6145572ADF38DC00F7A5CD /* AppDelegate.swift in Sources */,
 				5B6145592ADF38DC00F7A5CD /* SceneDelegate.swift in Sources */,
 			);
