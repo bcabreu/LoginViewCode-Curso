@@ -52,7 +52,7 @@ class LoginScreen: UIView {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightBlueColor]
         )
         //        Adicionando padding ao textField
-        let leftPaddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: tf.frame.height))
+        let leftPaddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: tf.frame.height))
         tf.leftView = leftPaddingView
         tf.leftViewMode = .always
         return tf
@@ -91,7 +91,8 @@ class LoginScreen: UIView {
         button.setTitle("Entrar", for: .normal)
         button.backgroundColor = UIColor.darkBlueColor
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        button.setTitleColor(UIColor.backgroundColor, for: .normal)
+        button.isEnabled = false
+        button.setTitleColor(UIColor.lightBlueColor, for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 8
         button.addTarget(self, action: #selector(tappedLoginButton), for: .touchUpInside)
@@ -125,6 +126,27 @@ class LoginScreen: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func validateTextField() {
+        let email: String = emailTextField.text ?? ""
+        let password: String = passwordTextField.text ?? ""
+        
+        if !email.isEmpty && !password.isEmpty {
+            configButtonEnable(true)
+        } else {
+            configButtonEnable(false)
+        }
+    }
+    
+    private func configButtonEnable(_ enable: Bool) {
+        if enable {
+            loginButton.setTitleColor(UIColor.backgroundColor, for: .normal)
+            loginButton.isEnabled = true
+        } else {
+            loginButton.setTitleColor(UIColor.lightBlueColor, for: .normal)
+            loginButton.isEnabled = false
+        }
     }
     
     private func addElements() {

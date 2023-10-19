@@ -14,6 +14,9 @@
 		5B61455B2ADF38DC00F7A5CD /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61455A2ADF38DC00F7A5CD /* LoginVC.swift */; };
 		5B6145602ADF38DF00F7A5CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B61455F2ADF38DF00F7A5CD /* Assets.xcassets */; };
 		5B6145632ADF38DF00F7A5CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B6145612ADF38DF00F7A5CD /* LaunchScreen.storyboard */; };
+		5BAE6C272AE19A8B005C6A0C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE6C262AE19A8B005C6A0C /* RegisterVC.swift */; };
+		5BAE6C292AE19AA0005C6A0C /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE6C282AE19A9F005C6A0C /* RegisterScreen.swift */; };
+		5BAE6C2C2AE1D144005C6A0C /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAE6C2B2AE1D144005C6A0C /* RegisterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		5B61455F2ADF38DF00F7A5CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B6145622ADF38DF00F7A5CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B6145642ADF38DF00F7A5CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BAE6C262AE19A8B005C6A0C /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		5BAE6C282AE19A9F005C6A0C /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
+		5BAE6C2B2AE1D144005C6A0C /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +89,8 @@
 		5B6145552ADF38DC00F7A5CD /* LoginViewCode-Curso */ = {
 			isa = PBXGroup;
 			children = (
+				5BAE6C232AE19A23005C6A0C /* Features */,
 				5B4813592AE06E02006C87EF /* Extensions */,
-				5B4813552AE06C38006C87EF /* Login */,
 				5B6145562ADF38DC00F7A5CD /* AppDelegate.swift */,
 				5B6145582ADF38DC00F7A5CD /* SceneDelegate.swift */,
 				5B61455F2ADF38DF00F7A5CD /* Assets.xcassets */,
@@ -92,6 +98,41 @@
 				5B6145642ADF38DF00F7A5CD /* Info.plist */,
 			);
 			path = "LoginViewCode-Curso";
+			sourceTree = "<group>";
+		};
+		5BAE6C232AE19A23005C6A0C /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				5BAE6C242AE19A3D005C6A0C /* Register */,
+				5B4813552AE06C38006C87EF /* Login */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		5BAE6C242AE19A3D005C6A0C /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				5BAE6C2A2AE1D121005C6A0C /* ViewModel */,
+				5BAE6C252AE19A53005C6A0C /* Screen */,
+				5BAE6C262AE19A8B005C6A0C /* RegisterVC.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		5BAE6C252AE19A53005C6A0C /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				5BAE6C282AE19A9F005C6A0C /* RegisterScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		5BAE6C2A2AE1D121005C6A0C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5BAE6C2B2AE1D144005C6A0C /* RegisterViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +208,9 @@
 				5B61455B2ADF38DC00F7A5CD /* LoginVC.swift in Sources */,
 				5B48135B2AE06E22006C87EF /* UIColor + Extensions.swift in Sources */,
 				5B4813582AE06C54006C87EF /* LoginScreen.swift in Sources */,
+				5BAE6C2C2AE1D144005C6A0C /* RegisterViewModel.swift in Sources */,
+				5BAE6C292AE19AA0005C6A0C /* RegisterScreen.swift in Sources */,
+				5BAE6C272AE19A8B005C6A0C /* RegisterVC.swift in Sources */,
 				5B6145572ADF38DC00F7A5CD /* AppDelegate.swift in Sources */,
 				5B6145592ADF38DC00F7A5CD /* SceneDelegate.swift in Sources */,
 			);
