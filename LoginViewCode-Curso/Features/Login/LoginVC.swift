@@ -49,12 +49,14 @@ extension LoginVC: UITextFieldDelegate {
 }
 
 extension LoginVC: LoginScreenProtocol {
-    func tappedRegisterButton() {
-        print("Register chegou na VC!")
-    }
     
     func tappedLoginButton() {
         print("Login chegou na VC!")
+    }
+    
+    func tappedRegisterButton() {
+        print("Register chegou na VC!")
+        navigationController?.pushViewController(RegisterVC(), animated: true)
     }
     
     
