@@ -21,23 +21,27 @@ class RegisterVC: UIViewController {
         super.viewDidLoad()
         registerScreen?.configTextfieldDelegate(delegate: self)
         registerScreen?.delegate(delegate: self)
+        
     }
 
 }
 
 extension RegisterVC: UITextFieldDelegate {
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         print(#function)
+        registerScreen?.validaTextField()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
     }
     
 }
 
 extension RegisterVC: RegisterScreenProtocol {
     func tappedBackButton() {
-        navigationController?.pushViewController(LoginVC(), animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     func tappedRegisterButton() {
@@ -47,4 +51,5 @@ extension RegisterVC: RegisterScreenProtocol {
     
     
 }
+
 

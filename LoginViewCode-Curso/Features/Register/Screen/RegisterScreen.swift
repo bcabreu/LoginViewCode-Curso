@@ -14,7 +14,7 @@ protocol RegisterScreenProtocol: AnyObject {
 
 class RegisterScreen: UIView {
     
-    private var delegate: RegisterScreenProtocol?
+    private weak var delegate: RegisterScreenProtocol?
     
     public func delegate(delegate: RegisterScreenProtocol?) {
         self.delegate = delegate
@@ -44,32 +44,34 @@ class RegisterScreen: UIView {
         return image
     }()
     
-    lazy var emailTextfield: UITextField = {
+    lazy var emailTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.keyboardType = .emailAddress
         tf.autocorrectionType = .no
+        tf.borderStyle = .roundedRect
         tf.clipsToBounds = true
         tf.layer.cornerRadius = 8
         tf.textColor = UIColor.backgroundColor
         tf.backgroundColor = UIColor.mediumBlueColor
         tf.attributedPlaceholder = NSAttributedString(
-            string: "digite seu email",
+            string: "Digite seu email",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightBlueColor]
         )
 //        criando padding para o texto
-        let leftPaddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: tf.frame.height))
+        let leftPaddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: tf.frame.height))
         tf.leftView = leftPaddingView
         tf.leftViewMode = .always
         return tf
     }()
     
-    lazy var passwordTextfield: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.keyboardType = .default
         tf.isSecureTextEntry = true
         tf.autocorrectionType = .no
+        tf.borderStyle = .roundedRect
         tf.clipsToBounds = true
         tf.layer.cornerRadius = 8
         tf.textColor = UIColor.backgroundColor
@@ -79,15 +81,15 @@ class RegisterScreen: UIView {
         attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightBlueColor]
         )
 //        Criando padding para o texto
-        let leftpaddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: tf.frame.height))
+        let leftpaddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: tf.frame.height))
         tf.leftView = leftpaddingView
         tf.leftViewMode = .always
         return tf
     }()
     
     public func configTextfieldDelegate(delegate: UITextFieldDelegate) {
-        emailTextfield.delegate = delegate
-        passwordTextfield.delegate = delegate
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
     }
     
     lazy var registerButton: UIButton = {
@@ -95,7 +97,8 @@ class RegisterScreen: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Register", for: .normal)
         button.backgroundColor = UIColor.darkBlueColor
-        button.setTitleColor(UIColor.backgroundColor, for: .normal)
+        button.isEnabled = false
+        button.setTitleColor(UIColor.lightBlueColor, for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 7
         button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
@@ -117,11 +120,33 @@ class RegisterScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    public func validaTextField() {
+        let email: String = emailTextField.text ?? ""
+        let password: String = passwordTextField.text ?? ""
+        
+        if !email.isEmpty && !password.isEmpty {
+            configButtonEnable(true)
+        } else {
+            configButtonEnable(false)
+        }
+    }
+    
+    private func configButtonEnable(_ enable: Bool) {
+        if enable {
+            registerButton.setTitleColor(UIColor.backgroundColor, for: .normal)
+            registerButton.isEnabled = true
+        } else {
+            registerButton.setTitleColor(UIColor.lightBlueColor, for: .normal)
+            registerButton.isEnabled = false
+        }
+    }
+    
     private func addElements() {
         addSubview(backButton)
         addSubview(personImageView)
-        addSubview(emailTextfield)
-        addSubview(passwordTextfield)
+        addSubview(emailTextField)
+        addSubview(passwordTextField)
         addSubview(registerButton)
     }
     private func configConstraints() {
@@ -130,26 +155,28 @@ class RegisterScreen: UIView {
             backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             
-            personImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 60),
+            personImageView.topAnchor.constraint(equalTo: backButton.topAnchor),
             personImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             personImageView.heightAnchor.constraint(equalToConstant: 100),
             personImageView.widthAnchor.constraint(equalToConstant: 100),
             
-            emailTextfield.topAnchor.constraint(equalTo: personImageView.bottomAnchor, constant: 30),
-            emailTextfield.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            emailTextfield.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            emailTextfield.heightAnchor.constraint(equalToConstant: 50),
+            emailTextField.topAnchor.constraint(equalTo: personImageView.bottomAnchor, constant: 30),
+            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            emailTextField.heightAnchor.constraint(equalToConstant: 50),
             
-            passwordTextfield.topAnchor.constraint(equalTo: emailTextfield.bottomAnchor, constant: 10),
-            passwordTextfield.leadingAnchor.constraint(equalTo: emailTextfield.leadingAnchor),
-            passwordTextfield.trailingAnchor.constraint(equalTo: emailTextfield.trailingAnchor),
-            passwordTextfield.heightAnchor.constraint(equalTo: emailTextfield.heightAnchor),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10),
+            passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
+            passwordTextField.heightAnchor.constraint(equalTo: emailTextField.heightAnchor),
             
-            registerButton.topAnchor.constraint(equalTo: passwordTextfield.bottomAnchor, constant: 20),
-            registerButton.leadingAnchor.constraint(equalTo: emailTextfield.leadingAnchor),
-            registerButton.trailingAnchor.constraint(equalTo: emailTextfield.trailingAnchor),
-            registerButton.heightAnchor.constraint(equalTo: emailTextfield.heightAnchor)
+            registerButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+            registerButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            registerButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
+            registerButton.heightAnchor.constraint(equalTo: emailTextField.heightAnchor)
         ])
     }
     
 }
+
+

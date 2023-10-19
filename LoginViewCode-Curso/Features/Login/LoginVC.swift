@@ -33,16 +33,15 @@ class LoginVC: UIViewController {
 }
 
 extension LoginVC: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        print(#function)
-    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         print(#function)
+        loginScreen?.validateTextField()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
     }
     
     
@@ -55,7 +54,6 @@ extension LoginVC: LoginScreenProtocol {
     }
     
     func tappedRegisterButton() {
-        print("Register chegou na VC!")
         navigationController?.pushViewController(RegisterVC(), animated: true)
     }
     
