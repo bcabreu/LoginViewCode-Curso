@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterVC: UIViewController {
     
     private var registerScreen: RegisterScreen?
+    private var auth: Auth?
+    private var alert: Alert?
     
     override func loadView() {
         super.loadView()
@@ -21,6 +24,8 @@ class RegisterVC: UIViewController {
         super.viewDidLoad()
         registerScreen?.configTextfieldDelegate(delegate: self)
         registerScreen?.delegate(delegate: self)
+        auth = Auth.auth()
+        alert = Alert(controller: self)
         
     }
 
@@ -29,7 +34,7 @@ class RegisterVC: UIViewController {
 extension RegisterVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print(#function)
+       
         registerScreen?.validaTextField()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -45,7 +50,22 @@ extension RegisterVC: RegisterScreenProtocol {
     }
     
     func tappedRegisterButton() {
-        print("Registro feito com sucesso")
+        
+        guard let register = registerScreen else { return }
+        
+        auth?.createUser(withEmail: register.getEmail(), password: register.getPassword(), completion: { (result, error) in
+            
+            if error != nil {
+                self.alert?.getAlert(title: "Atenção", message: "Erro ao cadastrar, verifique os dados e tente novamente")
+            } else {
+                self.alert?.getAlert(title: "Parabéns", message: "Usuário cadastrado com sucesso!", completion: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }
+            
+            
+            
+        })
        
     }
     

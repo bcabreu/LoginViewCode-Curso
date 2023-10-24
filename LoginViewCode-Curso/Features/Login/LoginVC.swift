@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginVC: UIViewController {
     
     private var loginScreen: LoginScreen?
+    private var auth: Auth?
+    private var alert: Alert?
     
     override func loadView() {
         super.loadView()
@@ -23,6 +26,8 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         loginScreen?.configTextfieldDelegate(delegate: self)
         loginScreen?.delegate(delegate: self)
+        auth = Auth.auth()
+        alert = Alert(controller: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +40,7 @@ class LoginVC: UIViewController {
 extension LoginVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print(#function)
+      
         loginScreen?.validateTextField()
     }
     
@@ -43,14 +48,27 @@ extension LoginVC: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
-    
 }
 
 extension LoginVC: LoginScreenProtocol {
     
     func tappedLoginButton() {
-        print("Login chegou na VC!")
+        
+        navigationController?.pushViewController(HomeVC(), animated: true)
+       
+//        guard let login = loginScreen else { return }
+//        
+//        auth?.signIn(withEmail: login.getEmail(), password: login.getPassword(), completion: { (usuario, error) in
+//            if error != nil {
+//                self.alert?.getAlert(title: "Atenção", message: "Atenção, dados incorretos, verifique e tente novamente")
+//            } else {
+//                if usuario == nil {
+//                    self.alert?.getAlert(title: "Atenção", message: "Tivemos um problema inesperado, tente novamente mais tarde")
+//                } else {
+//                    self.alert?.getAlert(title: "Parabéns", message: "usuário logado com sucesso!")
+//                }
+//            }
+//        })
     }
     
     func tappedRegisterButton() {

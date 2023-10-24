@@ -117,6 +117,14 @@ class LoginScreen: UIView {
         delegate?.tappedRegisterButton()
     }
     
+    public func getEmail() -> String {
+        return emailTextField.text ?? ""
+    }
+    
+    public func getPassword() -> String {
+        return passwordTextField.text ?? ""
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.backgroundColor
