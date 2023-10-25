@@ -56,19 +56,19 @@ extension LoginVC: LoginScreenProtocol {
         
         navigationController?.pushViewController(HomeVC(), animated: true)
        
-//        guard let login = loginScreen else { return }
-//        
-//        auth?.signIn(withEmail: login.getEmail(), password: login.getPassword(), completion: { (usuario, error) in
-//            if error != nil {
-//                self.alert?.getAlert(title: "Atenção", message: "Atenção, dados incorretos, verifique e tente novamente")
-//            } else {
-//                if usuario == nil {
-//                    self.alert?.getAlert(title: "Atenção", message: "Tivemos um problema inesperado, tente novamente mais tarde")
-//                } else {
-//                    self.alert?.getAlert(title: "Parabéns", message: "usuário logado com sucesso!")
-//                }
-//            }
-//        })
+        guard let login = loginScreen else { return }
+        
+        auth?.signIn(withEmail: login.getEmail(), password: login.getPassword(), completion: { (usuario, error) in
+            if error != nil {
+                self.alert?.getAlert(title: "Atenção", message: "Atenção, dados incorretos, verifique e tente novamente")
+            } else {
+                if usuario == nil {
+                    self.alert?.getAlert(title: "Atenção", message: "Tivemos um problema inesperado, tente novamente mais tarde")
+                } else {
+                    self.alert?.getAlert(title: "Parabéns", message: "usuário logado com sucesso!")
+                }
+            }
+        })
     }
     
     func tappedRegisterButton() {

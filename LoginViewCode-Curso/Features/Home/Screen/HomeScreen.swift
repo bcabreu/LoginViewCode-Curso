@@ -15,6 +15,7 @@ class HomeScreen: UIView {
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.lightBlueColor
         tableView.register(UserDetailTableViewCell.self, forCellReuseIdentifier: UserDetailTableViewCell.identifier)
+        tableView.register(SportTableViewCell.self, forCellReuseIdentifier: SportTableViewCell.identifier)
         return tableView
     }()
     
